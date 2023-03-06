@@ -16,6 +16,9 @@
     <Filter Include="Default">
       <UniqueIdentifier>{607e8533-f1db-4e01-a074-b8d47a08e785}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{a26ed28a-314b-43cc-beaa-427073c1087e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="System.h">
@@ -39,6 +42,9 @@
     <ClInclude Include="D3D.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="ColorShader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -56,6 +62,9 @@
     <ClCompile Include="D3D.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ColorShader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
@@ -69,5 +78,13 @@
     <Image Include="Engine.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Color.vs">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Color.ps">
+      <Filter>Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>
