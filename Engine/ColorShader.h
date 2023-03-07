@@ -29,15 +29,15 @@ public:
 public:
 	bool Initialize(ID3D11Device* InDevice, const HWND InHwnd);
 	void Shutdown();
-	bool Render(const ID3D11DeviceContext* const InDeviceContext, const int InIndexCount, const XMMATRIX& InWorldMatrix, const XMMATRIX& InViewMatrix, const XMMATRIX& InProjectionMatrix);
+	bool Render(ID3D11DeviceContext* InDeviceContext, const int InIndexCount, XMMATRIX& OutWorldMatrix, XMMATRIX& OutViewMatrix, XMMATRIX& OutProjectionMatrix);
 
 private:
 	bool InitializeShader(ID3D11Device* InDevice, const HWND InHwnd, const wstring& InVsFileName, const wstring& InPsFileName);
 	void ShutdownShader();
-	void OutputShaderErrorMessage(ID3D10Blob*, HWND, const wstring& InShaderFileName);
+	void OutputShaderErrorMessage(ID3D10Blob* InErrorMessage, const HWND InHwnd, const wstring& InShaderFileName);
 
-	bool SetShaderParameters(const ID3D11DeviceContext* const InDeviceContext, const XMMATRIX& InWorldMatrix, const XMMATRIX& InViewMatrix, const XMMATRIX& InProjectionMatrix);
-	void RenderShader(const ID3D11DeviceContext* const InDeviceContext, const int InIndexCount);
+	bool SetShaderParameters(ID3D11DeviceContext* InDeviceContext, XMMATRIX& OutWorldMatrix, XMMATRIX& OutViewMatrix, XMMATRIX& OutProjectionMatrix);
+	void RenderShader(ID3D11DeviceContext* InDeviceContext, const int InIndexCount);
 
 private:
 	ID3D11VertexShader* VertexShader;
