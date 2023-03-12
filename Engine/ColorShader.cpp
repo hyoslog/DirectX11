@@ -29,7 +29,7 @@ bool CColorShader::Render(ID3D11DeviceContext* InDeviceContext, const int InInde
 
     RenderShader(InDeviceContext, InIndexCount);
 
-	return false;
+	return true;
 }
 
 bool CColorShader::InitializeShader(ID3D11Device* InDevice, const HWND InHwnd, const wstring& InVsFileName, const wstring& InPsFileName)
@@ -51,7 +51,7 @@ bool CColorShader::InitializeShader(ID3D11Device* InDevice, const HWND InHwnd, c
         }
         else
         {
-            MessageBox(InHwnd, InVsFileName.c_str(), L"Missing Shader File", MB_OK);
+            MessageBox(InHwnd, InVsFileName.c_str(), L"Missing Shader File.", MB_OK);
         }
 
         return false;
@@ -71,7 +71,7 @@ bool CColorShader::InitializeShader(ID3D11Device* InDevice, const HWND InHwnd, c
         }
         else
         {
-            MessageBox(InHwnd, InPsFileName.c_str(), L"Missing Shader File", MB_OK);
+            MessageBox(InHwnd, InPsFileName.c_str(), L"Missing Shader File.", MB_OK);
         }
 
         return false;

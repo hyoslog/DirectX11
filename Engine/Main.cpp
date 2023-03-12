@@ -6,7 +6,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	bool result = false;
 
 	// 시스템 오브젝트 생성
-	CSystem* system = new CSystem;
+	CSystem* system = new CSystem();
 	assert(system);
 
 	// 초기화 및 실행

@@ -14,19 +14,16 @@
 #include <DirectXMath.h>
 using namespace DirectX;
 
-//////////////////////////////////////////////////////////////////////////
-// Å¬·¡½º
-//////////////////////////////////////////////////////////////////////////
 class CD3D final
 {
 public:
 	CD3D();
 	CD3D(const CD3D& InOther) = default;
-	~CD3D();
+	~CD3D() = default;
 
 public:
 	bool Initialize(const unsigned int InScreenWidth, const unsigned int InScreenHeight, const bool InbVsync, const HWND InHwnd, const bool InbFullScreen, const float InScreenDepth, const float InScreenNear);
-	void ShutDown();
+	void Shutdown();
 
 	void BegineScene(const float InRed, const float InGreen, const float InBlue, const float InAlpha);
 	void EndScene();

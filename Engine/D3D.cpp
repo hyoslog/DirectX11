@@ -18,10 +18,6 @@ CD3D::CD3D()
 {
 }
 
-CD3D::~CD3D()
-{
-}
-
 bool CD3D::Initialize(const unsigned int InScreenWidth, const int unsigned InScreenHeight, const bool InbVsync, const HWND InHwnd, const bool InbFullScreen, const float InScreenDepth, const float InScreenNear)
 {
 	HRESULT result = S_OK;
@@ -339,7 +335,7 @@ bool CD3D::Initialize(const unsigned int InScreenWidth, const int unsigned InScr
     return true;
 }
 
-void CD3D::ShutDown()
+void CD3D::Shutdown()
 {
 	if (SwapChain != nullptr)
 	{

@@ -10,17 +10,17 @@ const bool VSYNC_ENABLED = true;
 const float SCREEN_DEPTH = 1000.0f;
 const float SCREEN_NEAR = 0.1f;
 
-//////////////////////////////////////////////////////////////////////////
-// 클래스
-//////////////////////////////////////////////////////////////////////////
 // 그래픽 렌더링 처리
 class CD3D;
+class CCamera;
+class CModel;
+class CColorShader;
 class CGraphics final
 {
 public:
-	CGraphics();
-	CGraphics(const CGraphics& InOther);
-	~CGraphics();
+	CGraphics() = default;
+	CGraphics(const CGraphics& InOther) = default;
+	~CGraphics() = default;
 
 public:
 	bool Initialize(const int InScreenWidth, const int InScreenHeight, const HWND InHwnd);
@@ -32,4 +32,7 @@ private:
 
 private:
 	CD3D* Direct3D;
+	CCamera* Camera;
+	CModel* Model;
+	CColorShader* ColorShader;
 };

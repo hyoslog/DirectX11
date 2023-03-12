@@ -1,15 +1,12 @@
 #pragma once
 
-//////////////////////////////////////////////////////////////////////////
-// 클래스
-//////////////////////////////////////////////////////////////////////////
 // 키보드 입력 처리
 class CInput final
 {
 public:
-	CInput();
-	CInput(const CInput& InOther);
-	~CInput();
+	CInput() = default;
+	CInput(const CInput& InOther) = default;
+	~CInput() = default;
 
 public:
 	void Initialize();

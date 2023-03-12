@@ -17,12 +17,12 @@ bool CSystem::Initialize()
 	InitializeWindows(screenWidth, screenHeight);
 
 	// 입력 객체 생성 및 초기화
-	Input = new CInput;
+	Input = new CInput();
 	assert(Input);
 	Input->Initialize();
 
 	// 그래픽 객체 생성 및 초기화
-	Graphics = new CGraphics;
+	Graphics = new CGraphics();
 	assert(Graphics);
 	result = Graphics->Initialize(screenWidth, screenHeight, HWnd);
 
