@@ -29,14 +29,14 @@ public:
 public:
 	bool Initialize(ID3D11Device* InDevice, const HWND InHwnd);
 	void Shutdown();
-	bool Render(ID3D11DeviceContext* InDeviceContext, const int InIndexCount, XMMATRIX& OutWorldMatrix, XMMATRIX& OutViewMatrix, XMMATRIX& OutProjectionMatrix);
+	bool Render(ID3D11DeviceContext* InDeviceContext, const int InIndexCount, const XMMATRIX& InWorldMatrix, const XMMATRIX& InViewMatrix, const XMMATRIX& InProjectionMatrix);
 
 private:
 	bool InitializeShader(ID3D11Device* InDevice, const HWND InHwnd, const wstring& InVsFileName, const wstring& InPsFileName);
 	void ShutdownShader();
 	void OutputShaderErrorMessage(ID3D10Blob* InErrorMessage, const HWND InHwnd, const wstring& InShaderFileName);
 
-	bool SetShaderParameters(ID3D11DeviceContext* InDeviceContext, XMMATRIX& OutWorldMatrix, XMMATRIX& OutViewMatrix, XMMATRIX& OutProjectionMatrix);
+	bool SetShaderParameters(ID3D11DeviceContext* InDeviceContext, const XMMATRIX& InWorldMatrix, const XMMATRIX& InViewMatrix, const XMMATRIX& InProjectionMatrix);
 	void RenderShader(ID3D11DeviceContext* InDeviceContext, const int InIndexCount);
 
 private:

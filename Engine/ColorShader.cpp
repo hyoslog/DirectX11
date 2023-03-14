@@ -20,9 +20,9 @@ void CColorShader::Shutdown()
     return;
 }
 
-bool CColorShader::Render(ID3D11DeviceContext* InDeviceContext, const int InIndexCount, XMMATRIX& OutWorldMatrix, XMMATRIX& OutViewMatrix, XMMATRIX& OutProjectionMatrix)
+bool CColorShader::Render(ID3D11DeviceContext* InDeviceContext, const int InIndexCount, const XMMATRIX& InWorldMatrix, const XMMATRIX& InViewMatrix, const XMMATRIX& InProjectionMatrix)
 {
-    if (SetShaderParameters(InDeviceContext, OutWorldMatrix, OutViewMatrix, OutProjectionMatrix) == false)
+    if (SetShaderParameters(InDeviceContext, InWorldMatrix, InViewMatrix, InProjectionMatrix) == false)
     {
         return false;
     }
@@ -193,14 +193,9 @@ void CColorShader::OutputShaderErrorMessage(ID3D10Blob* InErrorMessage, const HW
    MessageBox(InHwnd, L"Error compiling shader. Check shader_error.txt for message.", InShaderFileName.c_str(), MB_OK);
 }
 
-bool CColorShader::SetShaderParameters(ID3D11DeviceContext* InDeviceContext, XMMATRIX& OutWorldMatrix, XMMATRIX& OutViewMatrix, XMMATRIX& OutProjectionMatrix)
+bool CColorShader::SetShaderParameters(ID3D11DeviceContext* InDeviceContext, const XMMATRIX& InWorldMatrix, const XMMATRIX& InViewMatrix, const XMMATRIX& InProjectionMatrix)
 {
-    HRESULT result = S_OK;      
-
-    // 행렬을 셰이더로 보내기 전에 행렬을 전치(DX11 요구사항)
-    OutWorldMatrix = XMMatrixTranspose(OutWorldMatrix);
-    OutViewMatrix = XMMatrixTranspose(OutViewMatrix);
-    OutProjectionMatrix = XMMatrixTranspose(OutProjectionMatrix);
+    HRESULT result = S_OK; 
 
     // 쓸 수 있도록 상수 버퍼 잠금
     D3D11_MAPPED_SUBRESOURCE mappedResource = {};
@@ -214,9 +209,10 @@ bool CColorShader::SetShaderParameters(ID3D11DeviceContext* InDeviceContext, XMM
     TMatrixBufferType* dataPtr = static_cast<TMatrixBufferType*>(mappedResource.pData);
 
     // 행렬을 상수 버퍼에 복사
-	dataPtr->World = OutWorldMatrix;
-	dataPtr->View = OutViewMatrix;
-	dataPtr->Projection = OutProjectionMatrix;
+    // 행렬을 셰이더로 보내기 전에 행렬을 전치(DX11 요구사항)
+	dataPtr->World = XMMatrixTranspose(InWorldMatrix);
+	dataPtr->View = XMMatrixTranspose(InViewMatrix);
+	dataPtr->Projection = XMMatrixTranspose(InProjectionMatrix);
 
     // 상수 버퍼 잠금 해제
     InDeviceContext->Unmap(MatrixBuffer, 0);
