@@ -24,8 +24,8 @@ PixelInputType ColorVertexShader(VertexInputType InInput)
 	InInput.position.w = 1.0f;
 
 	output.position = mul(InInput.position, WorldMatrix);
-	output.position = mul(output.position, WorldMatrix);
-	output.position = mul(output.position, WorldMatrix);
+	output.position = mul(output.position, ViewMatrix);
+	output.position = mul(output.position, ProjectionMatrix);
 
 	output.color = InInput.color;
 
