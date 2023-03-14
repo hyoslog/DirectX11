@@ -98,7 +98,7 @@ bool CGraphics::Render()
 	Camera->GetViewMatrix(viewdMatrix);
 
 	XMMATRIX projectionMatrix = {};
-	Direct3D->GetPojectionMatrix(projectionMatrix);
+	Direct3D->GetProjectionMatrix(projectionMatrix);
 
 	Model->Render(Direct3D->GetDeviceContext());
 

@@ -439,7 +439,7 @@ ID3D11DeviceContext* CD3D::GetDeviceContext() const
     return DeviceContext;
 }
 
-void CD3D::GetPojectionMatrix(XMMATRIX& OutProjectionMatrix)
+void CD3D::GetProjectionMatrix(XMMATRIX& OutProjectionMatrix)
 {
 	OutProjectionMatrix = ProjectionMatrix;
 }
